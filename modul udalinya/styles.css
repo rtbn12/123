@@ -1,0 +1,31 @@
+h1{
+  background: green;
+
+}
+.p1{
+  background: blue;
+  font-size: 32pt;
+  color: red;
+   text-shadow:green 2px 3px 4px
+
+}
+.p2{
+border: 10px solid yellow;
+border-radius: 50px;
+font-size: 24 pt;
+margin-bottom:60 px;
+padding-left:40 px;
+ text-shadow:green 2px 3px 4px
+}
+.p3{
+font-weight:900;
+font-size: 20 px;
+font-family: Courier New
+ text-shadow:green 2px 3px 4px
+}
+.p4{
+font-size: 24px;
+text-align: center;
+font-style: italic;
+ text-shadow:green 2px 3px 4px
+}
