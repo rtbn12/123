@@ -2,6 +2,9 @@ from django.db import models
 from django.contrib import admin
 from django.utils.html import format_html
 from django.utils import timezone
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 class Advertisment(models.Model):
     title=models.CharField('Название',max_length=128)
@@ -10,6 +13,9 @@ class Advertisment(models.Model):
     auction = models.BooleanField('Торг',help_text='Укажите,если возможен торг')
     create_at= models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE )
+    image = models.ImageField('изображение',upload_to='advertisements/')
+
 
     @admin.display(description='Дата создания')
     def created_date(self):
@@ -28,6 +34,14 @@ class Advertisment(models.Model):
                 '<span style="color:green;font-weight: bold;">Сегодня в {}</span>',updated_time
             )
         return self.updated_at.strftime('%d.%m.%Y')
+
+    @admin.display(description='Изображение')
+    def get_html_image(self):
+        if self.image :
+
+            return format_html(
+                '<img src ="{url}" style="max-width: 80px; max-height: 80px;">',url=self.image.url
+            )
 
 
 

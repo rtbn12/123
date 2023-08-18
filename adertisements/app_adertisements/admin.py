@@ -4,12 +4,12 @@ from .models import Advertisment
 
 
 class AdvertisementAdmin(admin.ModelAdmin):
-    list_display =['id','title','description','price','auction','created_date']
+    list_display =['id','title','description','price','auction','created_date','user','image','get_html_image']
     list_filter = ['price','auction','create_at']
     actions = ['make_auction_as_true','make_auction_as_false']
     fieldsets = (
         ('Общие',{
-            'fields':('title','description')
+            'fields':('title','description','user','image')
         }),
         ('Финанасы',{
             'fields':('price','auction'),

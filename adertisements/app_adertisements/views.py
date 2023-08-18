@@ -1,8 +1,11 @@
 from django.shortcuts import render
+from .models import Advertisment
 
 
-
-def index(request):return render(request,'index.html')
+def index(request):
+    advertisements = Advertisment.objects.all()
+    context={'advertisements': advertisements}
+    return render(request,'index.html',context)
 
 
 
